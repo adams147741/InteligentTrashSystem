@@ -1,0 +1,26 @@
+create table outposts
+(
+    id            int not null
+        primary key,
+    x_position    int null,
+    y_position    int null,
+    floor         int null,
+    aqi_threshold int null
+);
+
+create table devices
+(
+    id             int auto_increment
+        primary key,
+    description    varchar(255) null,
+    volume_max     int          null,
+    volume_current int          null,
+    weight_max     int          null,
+    weight_current int          null,
+    aqi_inside     int          null,
+    aqi_outside    int          null,
+    outpost        int          null,
+    constraint outpost
+        foreign key (outpost) references outposts (id)
+);
+
